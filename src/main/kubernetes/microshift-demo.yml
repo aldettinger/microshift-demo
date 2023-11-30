@@ -37,4 +37,12 @@ spec:
       containers:
         - name: camel-quarkus-examples-microshift
           image: quay.io/rhagallice/microshift-demo
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
 ---
