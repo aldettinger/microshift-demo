@@ -46,3 +46,20 @@ spec:
             seccompProfile:
               type: RuntimeDefault
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: camel-quarkus-examples-microshift
+    app.kubernetes.io/version: 3.6.0
+  name: mqtt-server
+  namespace: amq-broker
+spec:
+  ports:
+    - name: mqtt-server
+      port: 1883
+      targetPort: 1883
+  selector:
+      app: amq-broker
+  type: ClusterIP
+---
