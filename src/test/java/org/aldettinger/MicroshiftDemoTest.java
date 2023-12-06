@@ -13,7 +13,7 @@ import io.restassured.RestAssured;
 
 @QuarkusTest
 @QuarkusTestResource(ActiveMQTestResource.class)
-public class MicroshiftDemoTest {
+class MicroshiftDemoTest {
 
     List<String> validStatuses = Arrays.asList("The whole factory line is DOWN",
             "The whole factory line is UP",

@@ -14,8 +14,8 @@ Clone this git project, build and push the image to quay.io:
 git clone git@github.com:aldettinger/microshift-demo.git microshift-demo
 cd microshift-demo
 docker login registry.redhat.io
-mvn package
-docker build -f src/main/docker/Dockerfile.jvm -t quay.io/rhagallice/microshift-demo .
+mvn package -Dnative
+docker build -f src/main/docker/Dockerfile.native-micro -t quay.io/rhagallice/microshift-demo .
 docker push quay.io/rhagallice/microshift-demo
 ```
 
