@@ -32,6 +32,6 @@ ssh redhat@${USHIFT_IP}
 Finally, clean any previous deployment and update the cluster:
 
 ```
-oc delete all -l app.kubernetes.io/name=camel-quarkus-examples-microshift
+oc delete all -l app.kubernetes.io/name=camel-quarkus-examples-microshift -A
 oc apply -f https://raw.githubusercontent.com/aldettinger/microshift-demo/main/src/main/kubernetes/microshift-demo.yml
 ```
