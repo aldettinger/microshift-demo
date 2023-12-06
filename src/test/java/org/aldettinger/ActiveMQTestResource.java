@@ -38,7 +38,7 @@ public class ActiveMQTestResource implements QuarkusTestResourceLifecycleManager
 
         String brokerUrlTcp = String.format("tcp://%s:%d", containerHost, containerPort);
 
-        return Map.of("camel.component.paho-mqtt5.brokerUrl", brokerUrlTcp);
+        return Map.of("camel.component.paho-mqtt5.brokerUrl", brokerUrlTcp, "timer.period", "100");
     }
 
     @Override
