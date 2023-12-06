@@ -1,6 +1,5 @@
 package org.aldettinger;
 
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.testcontainers.containers.GenericContainer;
@@ -39,13 +38,7 @@ public class ActiveMQTestResource implements QuarkusTestResourceLifecycleManager
 
         String brokerUrlTcp = String.format("tcp://%s:%d", containerHost, containerPort);
 
-        Map<String, String> result = new LinkedHashMap<>();
-
-        result.put("camel.component.paho-mqtt5.brokerUrl", brokerUrlTcp);
-        //result.put("camel.component.paho-mqtt5.userName", ACTIVEMQ_USERNAME);
-        //result.put("camel.component.paho-mqtt5.password", ACTIVEMQ_PASSWORD);
-
-        return result;
+        return Map.of("camel.component.paho-mqtt5.brokerUrl", brokerUrlTcp);
     }
 
     @Override
