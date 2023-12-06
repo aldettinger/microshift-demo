@@ -28,7 +28,7 @@ public class DevicesStatusConsolidatorService {
             deviceStatuses.clear();
         } else {
             deviceStatuses.put(event.id(), event.status());
-            short consolidatedStatus = deviceStatuses.values().stream().reduce((short) 1, (s1, s2) -> (short) (s1 * s2));
+            short consolidatedStatus = deviceStatuses.values().stream().reduce((short) 1, (s1, s2) -> (s2 >=9 ? (short)0 : s1) );
 
             if (deviceStatuses.entrySet().size() == 5 && consolidatedStatus != 0) {
                 status = "The whole line is UP";
