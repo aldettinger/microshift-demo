@@ -5,14 +5,14 @@ import org.apache.camel.builder.RouteBuilder;
 public class MicroshiftDemoRouteBuilder extends RouteBuilder {
 
     @Override
-    public void configure() throws Exception {
-        // Consume factory line device events from mqtt broker
+    public void configure() {
+        // Consume factory line device events from MQTT broker
         from("paho-mqtt5:device-events")
-            // Transform the json payloda to java records
+            // Transform the JSON payload to Java records
             .unmarshal().json(DeviceEvent.class)
             // Forward the event to the service computing the consolidated status of the factory line
             .bean("devicesStatusConsolidator")
-            // Get the consolidated status of the factory line and log into to stdout for the demo
+            // Get the consolidated status of the factory line and log it to stdout for the demo
             .bean("devicesStatusConsolidator", "getStatus")
             .log("Status: ${body}");
 

@@ -17,7 +17,6 @@ public class ActiveMQTestResource implements QuarkusTestResourceLifecycleManager
     private static final int MQTT_PORT = 1883;
 
     private GenericContainer<?> container;
-    private String[] modules;
 
     @Override
     public Map<String, String> start() {

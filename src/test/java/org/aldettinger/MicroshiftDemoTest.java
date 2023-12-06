@@ -20,7 +20,7 @@ class MicroshiftDemoTest {
             "Some devices on the factory line are not ready");
 
     @Test
-    void mqttDoesWhat() throws InterruptedException {
+    void microshiftDemoShouldEndUpWithNonDefaultConsolidatedStatus() {
         Awaitility.await().atMost(Duration.ofSeconds(5)).until(() -> {
             String consolidateStatus = RestAssured
                     .when()
@@ -31,5 +31,4 @@ class MicroshiftDemoTest {
             return validStatuses.contains(consolidateStatus);
         });
     }
-
 }

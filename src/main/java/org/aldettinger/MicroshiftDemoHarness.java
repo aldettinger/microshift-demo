@@ -13,7 +13,7 @@ public class MicroshiftDemoHarness extends RouteBuilder {
     }
 
     @Override
-    public void configure() throws Exception {
+    public void configure() {
         Random random = new Random();
 
         from("timer:generate-device-events?period={{timer.period}}")

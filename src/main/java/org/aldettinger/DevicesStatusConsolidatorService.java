@@ -10,7 +10,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
 
 /**
- * Compute a consolidated status of all devices in the factory line.
+ * Compute a status of the factory line consolidating statuses from all devices on that line.
  */
 @RegisterForReflection
 @ApplicationScoped
@@ -19,7 +19,7 @@ public class DevicesStatusConsolidatorService {
 
     private volatile String status = "No information received yet";
 
-    private Map<Short, Short> deviceStatuses = new HashMap<>();
+    private final Map<Short, Short> deviceStatuses = new HashMap<>();
 
     @Handler
     void registerEvent(DeviceEvent event) {
@@ -28,9 +28,9 @@ public class DevicesStatusConsolidatorService {
             deviceStatuses.clear();
         } else {
             deviceStatuses.put(event.id(), event.status());
-            short consolidatedStatus = deviceStatuses.values().stream().reduce((short) 1, (s1, s2) -> (s2 >=9 ? (short)0 : s1) );
+            boolean anyStatusAboveThreshold = deviceStatuses.values().stream().anyMatch(s -> s >= 9 );
 
-            if (deviceStatuses.entrySet().size() == 5 && consolidatedStatus != 0) {
+            if (deviceStatuses.entrySet().size() == 5 && anyStatusAboveThreshold) {
                 status = "The whole line is UP";
             } else {
                 status = "Some devices on the factory line are not ready";
