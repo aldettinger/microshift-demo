@@ -16,9 +16,8 @@ public class MicroshiftDemoHarness extends RouteBuilder {
     public void configure() throws Exception {
         Random random = new Random();
 
-        // TODO: lazyStartProducer really needed ?
         from("timer:generate-device-events?period={{timer.period}}")
                 .process(e -> e.getMessage().setBody(createEvent(random)))
-                .to("paho-mqtt5:device-events?lazyStartProducer=true");
+                .to("paho-mqtt5:device-events");
     }
 }
