@@ -21,6 +21,10 @@ public class DevicesStatusConsolidatorService {
 
     private final Map<Short, Short> deviceStatuses = new HashMap<>();
 
+    /**
+     * Complex use case could be managed through custom java code.
+     * That is not possible with tools promoting no code approach.
+     */
     @Handler
     void registerEvent(DeviceEvent event) {
         if (event.id() == 0 && event.status() == 0) {

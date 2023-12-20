@@ -35,3 +35,18 @@ Finally, clean any previous deployment and update the cluster:
 oc delete all -l app.kubernetes.io/name=camel-quarkus-examples-microshift -A
 oc apply -f https://raw.githubusercontent.com/aldettinger/microshift-demo/main/src/main/kubernetes/microshift-demo.yml
 ```
+
+## Display the running resources on microshift
+
+```
+# Display Components Status
+oc get cs
+
+# Display amq-broker related resources
+oc get all -A -l app=amq-broker
+oc logs -n amq-broker amq-broker-6b4c66c87f-hsswv
+
+# Display microshift-demo related resources
+oc get all -A -l app.kubernetes.io/name=camel-quarkus-examples-microshift
+oc  logs -f camel-quarkus-examples-microshift-deployment-5df68dff98-tk4pq
+```
