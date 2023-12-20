@@ -2,7 +2,7 @@
 
 ## How to setup the microshift virtual machine ?
 
-Proceed with initial installation step as below:
+Proceed with initial installation steps as explained below:
  + Create the Microshift virtual machine following instructions [there](https://github.com/openshift/microshift/blob/main/docs/user/getting_started.md)
  + Deploy AMQ Broker on Microshift following instructions [there](https://github.com/openshift/microshift/blob/main/docs/user/howto_amq_broker.md)
 

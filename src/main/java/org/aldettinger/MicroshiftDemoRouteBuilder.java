@@ -12,7 +12,7 @@ public class MicroshiftDemoRouteBuilder extends RouteBuilder {
             .unmarshal().json(DeviceEvent.class)
             // Forward the event to the service computing the consolidated status of the factory line
             .bean("devicesStatusConsolidator")
-            // Get the consolidated status of the factory line and log it to stdout for the demo
+            // Get the consolidated status of the factory line and log it to stdout for demo purpose
             .bean("devicesStatusConsolidator", "getStatus")
             .log("Status: ${body}");
 
